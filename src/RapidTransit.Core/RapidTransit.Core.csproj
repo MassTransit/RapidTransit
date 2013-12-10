@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7A30C7B8-DB42-4DB3-AB21-8C4D8007C507}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RapidTransit.Core</RootNamespace>
+    <AssemblyName>RapidTransit.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Automatonymous">
+      <HintPath>..\packages\Automatonymous.1.2.0\lib\net40\Automatonymous.dll</HintPath>
+    </Reference>
+    <Reference Include="Automatonymous.MassTransitIntegration">
+      <HintPath>..\packages\Automatonymous.MassTransit.1.2.0\lib\net40\Automatonymous.MassTransitIntegration.dll</HintPath>
+    </Reference>
+    <Reference Include="Magnum">
+      <HintPath>..\packages\Magnum.2.1.1\lib\NET40\Magnum.dll</HintPath>
+    </Reference>
+    <Reference Include="MassTransit">
+      <HintPath>..\packages\MassTransit.2.9.0\lib\net40\MassTransit.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Taskell">
+      <HintPath>..\packages\Taskell.0.1.2\lib\net40\Taskell.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Caching\AbstractCacheDecorator.cs" />
+    <Compile Include="Caching\CacheItemCallback.cs" />
+    <Compile Include="Caching\ConcurrentCache.cs" />
+    <Compile Include="Caching\DictionaryCache.cs" />
+    <Compile Include="Caching\GenericTypeCache.cs" />
+    <Compile Include="Caching\ICache.cs" />
+    <Compile Include="Caching\ICacheControl.cs" />
+    <Compile Include="Caching\ICacheItemAdded.cs" />
+    <Compile Include="Caching\ICacheItemRemoved.cs" />
+    <Compile Include="Caching\ICacheItemUpdated.cs" />
+    <Compile Include="Caching\InMemoryObjectCache.cs" />
+    <Compile Include="Caching\IObjectCache.cs" />
+    <Compile Include="Caching\IReadCache.cs" />
+    <Compile Include="Caching\IReadOnlyObjectCache.cs" />
+    <Compile Include="Caching\IReadOnlyObjectIndex.cs" />
+    <Compile Include="Caching\KeySelector.cs" />
+    <Compile Include="Caching\MissingValueProvider.cs" />
+    <Compile Include="Caching\ReaderWriterLockedCache.cs" />
+    <Compile Include="Caching\ReadOnlyObjectIndex.cs" />
+    <Compile Include="Caching\ScheduledReloadCacheControl.cs" />
+    <Compile Include="Configuration\ConfigurationObjectValueProvider.cs" />
+    <Compile Include="Configuration\ConfigurationProviderBase.cs" />
+    <Compile Include="Configuration\ConfigurationProviderExtensions.cs" />
+    <Compile Include="Configuration\ConfigurationSettingsProvider.cs" />
+    <Compile Include="Configuration\ConnectionStringProvider.cs" />
+    <Compile Include="Configuration\FileConfigurationProvider.cs" />
+    <Compile Include="Configuration\IConfigurationProvider.cs" />
+    <Compile Include="Configuration\IConnectionStringProvider.cs" />
+    <Compile Include="Configuration\ISettings.cs" />
+    <Compile Include="Configuration\ISettingsProvider.cs" />
+    <Compile Include="Extensions\CastExtensions.cs" />
+    <Compile Include="Extensions\DbCommandExtensions.cs" />
+    <Compile Include="Extensions\ExpressionExtensions.cs" />
+    <Compile Include="Extensions\InterfaceExtensions.cs" />
+    <Compile Include="Extensions\QueryStringExtensions.cs" />
+    <Compile Include="Extensions\TimeSpanExtensions.cs" />
+    <Compile Include="Extensions\TypeExtensions.cs" />
+    <Compile Include="IManagementBus.cs" />
+    <Compile Include="IStateMachineActivityFactory.cs" />
+    <Compile Include="ITransportConfigurator.cs" />
+    <Compile Include="ManagementBus.cs" />
+    <Compile Include="ManagementBusSettings.cs" />
+    <Compile Include="Mapping\DictionaryConverterCache.cs" />
+    <Compile Include="Mapping\DictionaryObjectValueProvider.cs" />
+    <Compile Include="Mapping\DynamicObjectConverter.cs" />
+    <Compile Include="Mapping\DynamicObjectConverterCache.cs" />
+    <Compile Include="Mapping\DynamicObjectMapperCache.cs" />
+    <Compile Include="Mapping\EnumDictionaryMapper.cs" />
+    <Compile Include="Mapping\EnumObjectMapper.cs" />
+    <Compile Include="Mapping\IArrayValueProvider.cs" />
+    <Compile Include="Mapping\IDictionaryConverter.cs" />
+    <Compile Include="Mapping\IDictionaryMapper.cs" />
+    <Compile Include="Mapping\IObjectConverter.cs" />
+    <Compile Include="Mapping\IObjectConverterCache.cs" />
+    <Compile Include="Mapping\IObjectMapper.cs" />
+    <Compile Include="Mapping\IObjectMapperCache.cs" />
+    <Compile Include="Mapping\IObjectValueProvider.cs" />
+    <Compile Include="Mapping\NullableValueDictionaryMapper.cs" />
+    <Compile Include="Mapping\NullableValueObjectMapper.cs" />
+    <Compile Include="Mapping\ObjectArrayDictionaryMapper.cs" />
+    <Compile Include="Mapping\ObjectArrayObjectMapper.cs" />
+    <Compile Include="Mapping\ObjectArrayValueProvider.cs" />
+    <Compile Include="Mapping\ObjectConverterExtensions.cs" />
+    <Compile Include="Mapping\ObjectDictionaryConverter.cs" />
+    <Compile Include="Mapping\ObjectDictionaryMapper.cs" />
+    <Compile Include="Mapping\ObjectListDictionaryMapper.cs" />
+    <Compile Include="Mapping\ObjectListObjectMapper.cs" />
+    <Compile Include="Mapping\ObjectObjectMapper.cs" />
+    <Compile Include="Mapping\ValueArrayObjectMapper.cs" />
+    <Compile Include="Mapping\ValueDictionaryMapper.cs" />
+    <Compile Include="Mapping\ValueListObjectMapper.cs" />
+    <Compile Include="Mapping\ValueObjectDictionaryDictionaryMapper.cs" />
+    <Compile Include="Mapping\ValueObjectDictionaryObjectMapper.cs" />
+    <Compile Include="Mapping\ValueObjectMapper.cs" />
+    <Compile Include="Mapping\ValueValueDictionaryDictionaryMapper.cs" />
+    <Compile Include="Mapping\ValueValueDictionaryObjectMapper.cs" />
+    <Compile Include="Primitives\Enumeration.cs" />
+    <Compile Include="Primitives\Observable.cs" />
+    <Compile Include="Primitives\Trie.cs" />
+    <Compile Include="Primitives\TrieNode.cs" />
+    <Compile Include="Primitives\TrieWalker.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RabbitMqConfigurationSettings.cs" />
+    <Compile Include="RabbitMqSettings.cs" />
+    <Compile Include="RabbitMqSettingsExtensions.cs" />
+    <Compile Include="Reflection\ComponentFactory.cs" />
+    <Compile Include="Reflection\DynamicImplementationBuilder.cs" />
+    <Compile Include="Reflection\Factory.cs" />
+    <Compile Include="Reflection\IImplementationBuilder.cs" />
+    <Compile Include="Reflection\InterfaceReflectionCache.cs" />
+    <Compile Include="Reflection\ReadOnlyProperty.cs" />
+    <Compile Include="Reflection\ReadOnlyPropertyCache.cs" />
+    <Compile Include="Reflection\ReadWriteProperty.cs" />
+    <Compile Include="Reflection\ReadWritePropertyCache.cs" />
+    <Compile Include="Reflection\TypeNameFormatter.cs" />
+    <Compile Include="Scheduling\IScheduledTaskList.cs" />
+    <Compile Include="Scheduling\IScheduler.cs" />
+    <Compile Include="Scheduling\ScheduledTaskList.cs" />
+    <Compile Include="Scheduling\TimerScheduler.cs" />
+    <Compile Include="Services\IServiceBusHost.cs" />
+    <Compile Include="Services\ServiceBusHost.cs" />
+    <Compile Include="Services\ServiceExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
