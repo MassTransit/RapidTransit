@@ -10,6 +10,13 @@
 
         public static string GetFriendlyDescription(this Type bootstrapperType)
         {
+            string name = GetFriendlyName(bootstrapperType);
+
+            return _regex.Replace(name, " $1");
+        }
+
+        public static string GetFriendlyName(this Type bootstrapperType)
+        {
             string name = bootstrapperType.Name;
             if (name.EndsWith("Bootstrapper", StringComparison.InvariantCultureIgnoreCase))
                 name = name.Substring(0, name.Length - "Bootstrapper".Length);
@@ -17,8 +24,7 @@
                 name = name.Substring(0, name.Length - "Service".Length);
             if (name.EndsWith("BusHost", StringComparison.InvariantCultureIgnoreCase))
                 name = name.Substring(0, name.Length - "BusHost".Length);
-
-            return _regex.Replace(name, " $1");
+            return name;
         }
     }
 }

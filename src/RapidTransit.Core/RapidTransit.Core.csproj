@@ -31,16 +31,22 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Automatonymous">
-      <HintPath>..\packages\Automatonymous.1.2.0\lib\net40\Automatonymous.dll</HintPath>
+      <HintPath>..\packages\Automatonymous.1.2.2\lib\net40\Automatonymous.dll</HintPath>
     </Reference>
     <Reference Include="Automatonymous.MassTransitIntegration">
-      <HintPath>..\packages\Automatonymous.MassTransit.1.2.0\lib\net40\Automatonymous.MassTransitIntegration.dll</HintPath>
+      <HintPath>..\packages\Automatonymous.MassTransit.1.2.2\lib\net40\Automatonymous.MassTransitIntegration.dll</HintPath>
     </Reference>
     <Reference Include="Magnum">
       <HintPath>..\packages\Magnum.2.1.1\lib\NET40\Magnum.dll</HintPath>
     </Reference>
     <Reference Include="MassTransit">
-      <HintPath>..\packages\MassTransit.2.9.0\lib\net40\MassTransit.dll</HintPath>
+      <HintPath>..\packages\MassTransit.2.9.2\lib\net40\MassTransit.dll</HintPath>
+    </Reference>
+    <Reference Include="MassTransit.Courier">
+      <HintPath>..\packages\MassTransit.Courier.2.9.2\lib\net40-full\MassTransit.Courier.dll</HintPath>
+    </Reference>
+    <Reference Include="MassTransit.Scheduling">
+      <HintPath>..\packages\MassTransit.Scheduling.1.2.2\lib\net40-full\MassTransit.Scheduling.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -92,11 +98,11 @@
     <Compile Include="Extensions\QueryStringExtensions.cs" />
     <Compile Include="Extensions\TimeSpanExtensions.cs" />
     <Compile Include="Extensions\TypeExtensions.cs" />
-    <Compile Include="IManagementBus.cs" />
+    <Compile Include="IHostServiceBus.cs" />
     <Compile Include="IStateMachineActivityFactory.cs" />
     <Compile Include="ITransportConfigurator.cs" />
-    <Compile Include="ManagementBus.cs" />
-    <Compile Include="ManagementBusSettings.cs" />
+    <Compile Include="HostServiceBus.cs" />
+    <Compile Include="HostServiceBusSettings.cs" />
     <Compile Include="Mapping\DictionaryConverterCache.cs" />
     <Compile Include="Mapping\DictionaryObjectValueProvider.cs" />
     <Compile Include="Mapping\DynamicObjectConverter.cs" />
@@ -150,10 +156,11 @@
     <Compile Include="Reflection\ReadWriteProperty.cs" />
     <Compile Include="Reflection\ReadWritePropertyCache.cs" />
     <Compile Include="Reflection\TypeNameFormatter.cs" />
+    <Compile Include="RoutingSlipEventExtensions.cs" />
     <Compile Include="Scheduling\IScheduledTaskList.cs" />
-    <Compile Include="Scheduling\IScheduler.cs" />
+    <Compile Include="Scheduling\ITaskScheduler.cs" />
     <Compile Include="Scheduling\ScheduledTaskList.cs" />
-    <Compile Include="Scheduling\TimerScheduler.cs" />
+    <Compile Include="Scheduling\TimerTaskScheduler.cs" />
     <Compile Include="Services\IServiceBusHost.cs" />
     <Compile Include="Services\ServiceBusHost.cs" />
     <Compile Include="Services\ServiceExtensions.cs" />

@@ -4,7 +4,13 @@
     using Configuration;
 
 
-    public class RabbitMqConfigurationSettings :
+    /// <summary>
+    /// This is an alternative implemention of the RabbitMqSettings, for cases where the specific
+    /// keys may need to be specified. It is provided as an example only and should only be used 
+    /// to cut-and-paste into your own application and modified as necessary. The provider version
+    /// is better utilizied.
+    /// </summary>
+    class RabbitMqConfigurationSettings :
         RabbitMqSettings
     {
         public RabbitMqConfigurationSettings(IConfigurationProvider configurationProvider)

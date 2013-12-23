@@ -3,19 +3,30 @@ namespace RapidTransit.Core
     using System;
     using MassTransit;
     using MassTransit.Diagnostics.Introspection;
+    using MassTransit.Logging;
     using MassTransit.Pipeline;
 
 
-    public class ManagementBus :
-        IManagementBus
+    /// <summary>
+    /// The host service bus is a per-service bus instance that is created and added to the 
+    /// root container. It can be used by any services for service-level event notifications, such as
+    /// cache item expirations that need to be received by every service instance on every server running
+    /// the service
+    /// </summary>
+    public class HostServiceBus :
+        IHostServiceBus
     {
         readonly IServiceBus _bus;
+        readonly ILog _log = Logger.Get<HostServiceBus>();
         bool _disposed;
 
-        public ManagementBus(ITransportConfigurator transportConfigurator, string queueName)
+        public HostServiceBus(ITransportConfigurator transportConfigurator, HostServiceBusSettings settings)
         {
-            IServiceBus bus = ServiceBusFactory.New(x => transportConfigurator.Configure(x, queueName, 1));
+            _log.DebugFormat("Creating host service bus on queue: {0}", settings.QueueName);
+
+            IServiceBus bus = ServiceBusFactory.New(x => transportConfigurator.Configure(x, settings.QueueName, 1));
             _bus = bus;
+            _log.DebugFormat("host service bus created: {0}", _bus.Endpoint.Address.Uri);
         }
 
         public void Dispose()
@@ -27,6 +38,8 @@ namespace RapidTransit.Core
 
                 _disposed = true;
             }
+
+            _log.DebugFormat("Disposing host service bus: {0}", _bus.Endpoint.Address.Uri);
 
             _bus.Dispose();
         }

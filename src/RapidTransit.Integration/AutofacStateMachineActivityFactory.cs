@@ -5,12 +5,12 @@ namespace RapidTransit.Integration
     using Core;
 
 
-    public class StateMachineActivityFactory :
+    public class AutofacStateMachineActivityFactory :
         IStateMachineActivityFactory
     {
         readonly IComponentContext _context;
 
-        public StateMachineActivityFactory(IComponentContext context)
+        public AutofacStateMachineActivityFactory(IComponentContext context)
         {
             _context = context;
         }

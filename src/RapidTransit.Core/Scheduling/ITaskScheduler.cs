@@ -4,7 +4,7 @@ namespace RapidTransit.Core.Scheduling
     using System.Threading.Tasks;
 
 
-    public interface IScheduler
+    public interface ITaskScheduler
     {
         void Schedule(TimeSpan interval, Task task);
         void Schedule(DateTime timeSlot, Task task);

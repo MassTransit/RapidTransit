@@ -1,4 +1,4 @@
-namespace RapidTransit.Integration.Configuration
+namespace RapidTransit.Integration
 {
     using System.Configuration;
     using Autofac;
@@ -11,14 +11,6 @@ namespace RapidTransit.Integration.Configuration
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<FileConfigurationProvider>()
-                   .As<IConfigurationProvider>()
-                   .SingleInstance();
-
-            builder.RegisterType<ConnectionStringProvider>()
-                   .As<IConnectionStringProvider>()
-                   .SingleInstance();
-
             builder.Register(GetRabbitMqSettings)
                    .As<RabbitMqSettings>()
                    .SingleInstance();

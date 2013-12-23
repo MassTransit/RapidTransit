@@ -1,4 +1,4 @@
-﻿namespace RapidTransit.Integration
+﻿namespace RapidTransit.Core
 {
     using System;
     using System.Collections.Generic;

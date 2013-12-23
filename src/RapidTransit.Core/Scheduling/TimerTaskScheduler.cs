@@ -8,8 +8,8 @@
 
 
     [DebuggerDisplay("{GetType().Name} ( Count: {Count}, Next: {NextActionTime} )")]
-    public class TimerScheduler :
-        IScheduler,
+    public class TimerTaskScheduler :
+        ITaskScheduler,
         IDisposable
     {
         readonly object _lock = new object();

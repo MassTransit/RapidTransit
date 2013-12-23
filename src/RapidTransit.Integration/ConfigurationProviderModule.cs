@@ -1,20 +1,16 @@
-namespace RapidTransit.Integration.Configuration
+namespace RapidTransit.Integration
 {
     using Autofac;
-    using RapidTransit.Core.Configuration;
-    using RapidTransit.Core.Mapping;
-    using RapidTransit.Core.Reflection;
+    using Core.Configuration;
+    using Core.Mapping;
+    using Core.Reflection;
 
 
-    public class ConfigurationProviderModule :
+    public abstract class ConfigurationProviderModule :
         Module
     {
         protected override void Load(ContainerBuilder builder)
         {
-            builder.RegisterType<FileConfigurationProvider>()
-                   .As<IConfigurationProvider>()
-                   .SingleInstance();
-
             builder.RegisterType<ConnectionStringProvider>()
                    .As<IConnectionStringProvider>()
                    .SingleInstance();

@@ -19,11 +19,11 @@
         readonly TimeSpan _cacheTimeout;
         readonly object _lock = new object();
         readonly Func<TReload> _reloadEventFactory;
-        readonly IScheduler _scheduler;
+        readonly ITaskScheduler _scheduler;
         Task _updateTask;
 
         public ScheduledReloadCacheControl(ICacheControl<TReload, TReloaded> cacheControl,
-            IScheduler scheduler,
+            ITaskScheduler scheduler,
             Func<TReload> reloadEventFactory, int cacheTimeoutInMinutes)
         {
             _reloadEventFactory = reloadEventFactory;
@@ -94,7 +94,7 @@
         readonly ICacheControl<TReload, TReloaded> _scheduledCacheControl;
 
         public ScheduledReloadCacheControl(ICacheControl<TReload, TReloaded, TUpdate, TUpdated> cacheControl,
-            IScheduler scheduler, Func<TReload> reloadEventFactory, int cacheTimeoutInMinutes)
+            ITaskScheduler scheduler, Func<TReload> reloadEventFactory, int cacheTimeoutInMinutes)
         {
             _cacheControl = cacheControl;
             _scheduledCacheControl = new ScheduledReloadCacheControl<TReload, TReloaded>(cacheControl, scheduler,

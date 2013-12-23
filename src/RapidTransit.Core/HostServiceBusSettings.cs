@@ -3,7 +3,7 @@
     using Configuration;
 
 
-    public interface ManagementBusSettings :
+    public interface HostServiceBusSettings :
         ISettings
     {
         string QueueName { get; }

@@ -1,4 +1,4 @@
-namespace RapidTransit.Integration.Configuration
+namespace RapidTransit.Integration
 {
     using System;
     using System.Linq;
@@ -25,11 +25,11 @@ namespace RapidTransit.Integration.Configuration
 
         void ITransportConfigurator.Configure(ServiceBusConfigurator configurator, string queueName, int? consumerLimit)
         {
-            Uri busUri = BuildQueueUri(queueName, consumerLimit);
+            Uri receiveFrom = GetQueueAddress(queueName, consumerLimit);
 
             configurator.UseRabbitMq(x =>
                 {
-                    x.ConfigureHost(busUri, h =>
+                    x.ConfigureHost(receiveFrom, h =>
                         {
                             h.SetUsername(_settings.Username);
                             h.SetPassword(_settings.Password);
@@ -37,12 +37,12 @@ namespace RapidTransit.Integration.Configuration
                         });
                 });
 
-            configurator.ReceiveFrom(busUri);
+            configurator.ReceiveFrom(receiveFrom);
             if (consumerLimit.HasValue)
                 configurator.SetConcurrentConsumerLimit(consumerLimit.Value);
         }
 
-        public Uri BuildQueueUri(string queueName, int? consumerLimit = default(int?))
+        public Uri GetQueueAddress(string queueName, int? consumerLimit = default(int?))
         {
             string[] paths = _settings.VirtualHost.Split(new[] {'/'}, StringSplitOptions.RemoveEmptyEntries);
             string path = string.Join("/", paths.Concat(new[] {queueName}).ToArray());

@@ -1,4 +1,4 @@
-﻿namespace RapidTransit.Integration
+﻿namespace RapidTransit.Integration.Services
 {
     using System;
     using Core;
@@ -6,18 +6,23 @@
     using Topshelf.Runtime;
 
 
-    public class ManagementBusConfigurationSettings :
-        ManagementBusSettings
+    /// <summary>
+    /// Registered in the container to implement the management bus settings
+    /// </summary>
+    public class HostServiceBusConfigurationSettings :
+        HostServiceBusSettings
     {
+        const string QueueNameKey = "HostServiceBusQueueName";
+
         readonly string _baseQueueName;
 
-        public ManagementBusConfigurationSettings(IConfigurationProvider configurationProvider,
+        public HostServiceBusConfigurationSettings(IConfigurationProvider configurationProvider,
             HostSettings hostSettings)
         {
             _baseQueueName = GetBaseQueueName(configurationProvider, hostSettings);
         }
 
-        public string QueueName
+        string HostServiceBusSettings.QueueName
         {
             get { return string.Format("{0}_{1}", _baseQueueName, Environment.MachineName.ToLowerInvariant()); }
         }
@@ -25,8 +30,9 @@
         static string GetBaseQueueName(IConfigurationProvider configurationProvider, HostSettings hostSettings)
         {
             string baseQueueName;
-            if (configurationProvider.TryGetSetting("ManagementBusQueueName", out baseQueueName))
+            if (configurationProvider.TryGetSetting(QueueNameKey, out baseQueueName))
                 return baseQueueName;
+
             return hostSettings.ServiceName.Replace(" ", "_");
         }
     }

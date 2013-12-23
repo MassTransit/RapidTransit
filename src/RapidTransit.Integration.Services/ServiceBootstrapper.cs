@@ -1,7 +1,7 @@
 namespace RapidTransit.Integration.Services
 {
     using Autofac;
-    using RapidTransit.Core.Services;
+    using Core.Services;
     using Topshelf;
 
 
