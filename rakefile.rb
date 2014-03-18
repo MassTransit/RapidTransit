@@ -151,6 +151,7 @@ nuspec :_nuspec do |nuspec|
   nuspec.dependency 'MassTransit.Autofac', "2.9.5"
   nuspec.dependency 'MassTransit.Courier', "2.9.5"
   nuspec.dependency 'MassTransit.RabbitMQ', "2.9.5"
+  nuspec.dependency 'MassTransit.Scheduling', "1.2.5"
   nuspec.dependency 'Newtonsoft.Json', "5.0.8"
   nuspec.dependency 'RabbitMQ.Client', "3.2.1"
   nuspec.dependency 'Taskell', "0.1.2"
@@ -172,9 +173,17 @@ nuspec :_nuspec do |nuspec|
   nuspec.dependency "RapidTransit.Core", NUGET_VERSION
   nuspec.dependency "RapidTransit.Integration", NUGET_VERSION
   nuspec.dependency 'Autofac', "3.3.0"
+  nuspec.dependency 'Automatonymous', "1.2.5"
+  nuspec.dependency 'Automatonymous.MassTransit', "1.2.5"
   nuspec.dependency 'Magnum', "2.1.2"
   nuspec.dependency 'MassTransit', "2.9.5"
+  nuspec.dependency 'MassTransit.Autofac', "2.9.5"
+  nuspec.dependency 'MassTransit.Courier', "2.9.5"
+  nuspec.dependency 'MassTransit.RabbitMQ', "2.9.5"
+  nuspec.dependency 'MassTransit.Scheduling', "1.2.5"
   nuspec.dependency 'Newtonsoft.Json', "5.0.8"
+  nuspec.dependency 'RabbitMQ.Client', "3.2.1"
+  nuspec.dependency 'Taskell', "0.1.2"
   nuspec.output_file = File.join(props[:artifacts], 'RapidTransit.Integration.Web.nuspec')
   add_files props[:output], 'RapidTransit.Integration.Web.{dll,pdb,xml}', nuspec
   nuspec.file(File.join(props[:src], "RapidTransit.Integration.Web\\**\\*.cs").gsub("/","\\"), "src")
@@ -192,15 +201,22 @@ nuspec :_nuspec do |nuspec|
   nuspec.requireLicenseAcceptance = "false"
   nuspec.dependency "RapidTransit.Core", NUGET_VERSION
   nuspec.dependency "RapidTransit.Integration", NUGET_VERSION
-  nuspec.dependency 'Autofac', '3.3.0'
+  nuspec.dependency 'Autofac', "3.3.0"
+  nuspec.dependency 'Automatonymous', "1.2.5"
+  nuspec.dependency 'Automatonymous.MassTransit', "1.2.5"
   nuspec.dependency 'Common.Logging', '2.2.0'
   nuspec.dependency 'Common.Logging.Core', '2.2.0'
-  nuspec.dependency 'Magnum', '2.1.2'
-  nuspec.dependency 'MassTransit', '2.9.5'
+  nuspec.dependency 'Magnum', "2.1.2"
+  nuspec.dependency 'MassTransit', "2.9.5"
+  nuspec.dependency 'MassTransit.Autofac', "2.9.5"
+  nuspec.dependency 'MassTransit.Courier', "2.9.5"
   nuspec.dependency 'MassTransit.QuartzIntegration', '1.2.5'
+  nuspec.dependency 'MassTransit.RabbitMQ', "2.9.5"
   nuspec.dependency 'MassTransit.Scheduling', '1.2.5'
-  nuspec.dependency 'Newtonsoft.Json', '5.0.8'
+  nuspec.dependency 'Newtonsoft.Json', "5.0.8"
   nuspec.dependency 'Quartz', '2.2.2'
+  nuspec.dependency 'RabbitMQ.Client', "3.2.1"
+  nuspec.dependency 'Taskell', "0.1.2"
   nuspec.dependency 'Topshelf', '3.1.3'
   nuspec.output_file = File.join(props[:artifacts], 'RapidTransit.Integration.Services.nuspec')
   add_files props[:output], 'RapidTransit.Integration.Services.{dll,pdb,xml}', nuspec
