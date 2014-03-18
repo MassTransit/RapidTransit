@@ -1,22 +1,15 @@
-﻿namespace RapidTransit.Integration.Configuration
+﻿namespace RapidTransit.Core
 {
     using System;
-    using Core;
-    using Core.Configuration;
 
 
     public class RabbitMqActivityUriProvider :
         IActivityUriProvider
     {
-        readonly IConfigurationProvider _configurationProvider;
-
         readonly RabbitMqSettings _settings;
 
-
-        public RabbitMqActivityUriProvider(IConfigurationProvider configurationProvider, RabbitMqSettings settings)
+        public RabbitMqActivityUriProvider(RabbitMqSettings settings)
         {
-            _configurationProvider = configurationProvider;
-
             _settings = settings;
         }
 
@@ -36,16 +29,14 @@
 
         public string GetExecuteActivityQueueName(string activityName)
         {
-            string prefix = _configurationProvider.GetSetting("HAQueuePrefix", "");
-
-            return string.Format("{1}execute_{0}", activityName.ToLowerInvariant(), prefix);
+            return string.Format("{1}execute_{0}", activityName.ToLowerInvariant(),
+                _settings.HighAvailabilityQueuePrefix);
         }
 
         public string GetCompensateActivityQueueName(string activityName)
         {
-            string prefix = _configurationProvider.GetSetting("HAQueuePrefix", "");
-
-            return string.Format("{1}compensate_{0}", activityName.ToLowerInvariant(), prefix);
+            return string.Format("{1}compensate_{0}", activityName.ToLowerInvariant(),
+                _settings.HighAvailabilityQueuePrefix);
         }
     }
 }

@@ -103,6 +103,7 @@
     <Compile Include="Extensions\QueryStringExtensions.cs" />
     <Compile Include="Extensions\TimeSpanExtensions.cs" />
     <Compile Include="Extensions\TypeExtensions.cs" />
+    <Compile Include="IActivityUriProvider.cs" />
     <Compile Include="IHostServiceBus.cs" />
     <Compile Include="IStateMachineActivityFactory.cs" />
     <Compile Include="ITransportConfigurator.cs" />
@@ -147,6 +148,7 @@
     <Compile Include="Primitives\Trie.cs" />
     <Compile Include="Primitives\TrieNode.cs" />
     <Compile Include="Primitives\TrieWalker.cs" />
+    <Compile Include="RabbitMqActivityUriProvider.cs" />
     <Compile Include="RabbitMqConfigurationSettings.cs" />
     <Compile Include="RabbitMqSettings.cs" />
     <Compile Include="RabbitMqSettingsExtensions.cs" />

@@ -79,8 +79,6 @@
     </Compile>
     <Compile Include="AutofacStateMachineActivityFactory.cs" />
     <Compile Include="ConfigurationProviderModule.cs" />
-    <Compile Include="Configuration\IActivityUriProvider.cs" />
-    <Compile Include="Configuration\RabbitMqActivityUriProvider.cs" />
     <Compile Include="ContainerBuilderExtensions.cs" />
     <Compile Include="RabbitMqConfigurationModule.cs" />
     <Compile Include="RabbitMqTransportConfigurator.cs" />
@@ -89,6 +87,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Configuration\" />
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>

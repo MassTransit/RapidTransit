@@ -21,7 +21,7 @@ desc "Cleans, compiles, il-merges, unit tests, prepares examples, packages zip"
 task :all => [:default, :package]
 
 desc "**Default**, compiles and runs tests"
-task :default => [:clean, :nuget_restore, :compile, :package]
+task :default => [:clean, :nuget_restore, :compile, :tests, :package]
 
 desc "Update the common version information for the build. You can call this task without building."
 assemblyinfo :global_version do |asm|
@@ -78,7 +78,6 @@ end
 
 desc "Runs unit tests"
 nunit :tests => [:compile] do |nunit|
-
           nunit.command = File.join('src', 'packages','NUnit.Runners.2.6.3', 'tools', 'nunit-console.exe')
           nunit.options = "/framework=#{CLR_TOOLS_VERSION}", '/nothread', '/nologo', '/labels', "\"/xml=#{File.join(props[:artifacts], 'nunit-test-results.xml')}\""
           nunit.assemblies = FileList[File.join(props[:src], "RapidTransit.Tests/bin/Release", "RapidTransit.Tests.dll")]

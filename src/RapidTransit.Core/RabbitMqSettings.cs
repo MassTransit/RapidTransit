@@ -41,5 +41,11 @@
         /// A URI-style list of options to use when specifying the input queue
         /// </summary>
         string Options { get; }
+
+        /// <summary>
+        /// RabbitMQ uses a server-side policy to match queues that should be HA in a cluster,
+        /// so make that a configuration option
+        /// </summary>
+        string HighAvailabilityQueuePrefix { get; }
     }
 }

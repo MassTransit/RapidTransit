@@ -1,7 +1,6 @@
 namespace RapidTransit.Integration.Services
 {
     using System;
-    using Configuration;
     using Core;
     using Core.Configuration;
     using MassTransit;

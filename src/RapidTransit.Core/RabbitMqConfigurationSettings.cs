@@ -32,9 +32,11 @@
             Password = password;
 
             Heartbeat = (ushort)configurationProvider.GetSetting("RabbitMQHeartbeat", 30);
-            Port = configurationProvider.GetSetting("RabbitMQPort", 5893);
+            Port = configurationProvider.GetSetting("RabbitMQPort", 5672);
             VirtualHost = configurationProvider.GetSetting("RabbitMQVirtualHost", "");
             Options = configurationProvider.GetSetting("RabbitMQOptions", "");
+
+            HighAvailabilityQueuePrefix = configurationProvider.GetSetting("RabbitMQHAPrefix", "");
         }
 
         public string Username { get; private set; }
@@ -44,5 +46,6 @@
         public int Port { get; private set; }
         public string VirtualHost { get; private set; }
         public string Options { get; private set; }
+        public string HighAvailabilityQueuePrefix { get; private set; }
     }
 }

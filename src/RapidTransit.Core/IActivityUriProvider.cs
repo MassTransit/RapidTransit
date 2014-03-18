@@ -1,4 +1,4 @@
-﻿namespace RapidTransit.Integration.Configuration
+namespace RapidTransit.Core
 {
     using System;
 
