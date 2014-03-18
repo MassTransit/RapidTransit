@@ -93,6 +93,12 @@
     <Compile Include="..\SolutionVersion.cs">
       <Link>SolutionVersion.cs</Link>
     </Compile>
+    <Compile Include="ActivityService.cs" />
+    <Compile Include="ActivityServiceBootstrapper.cs" />
+    <Compile Include="AutofacCompensateActivityFactory.cs" />
+    <Compile Include="AutofacExecuteActivityFactory.cs" />
+    <Compile Include="ExecuteActivityService.cs" />
+    <Compile Include="ExecuteActivityServiceBootstrapper.cs" />
     <Compile Include="HostServiceBusConfigurationSettings.cs" />
     <Compile Include="HostServiceBusModule.cs" />
     <Compile Include="IServiceBootstrapper.cs" />
@@ -121,7 +127,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
