@@ -11,7 +11,7 @@
 
 
     public class MessageSchedulingServiceBootstrapper :
-        ServiceBusHostServiceBootstrapper
+        ServiceBusInstanceServiceBootstrapper
     {
         public MessageSchedulingServiceBootstrapper(ILifetimeScope lifetimeScope)
             : base(lifetimeScope, typeof(MessageSchedulingServiceBootstrapper))
@@ -32,8 +32,8 @@
                    .SingleInstance()
                    .As<IScheduler>();
 
-            builder.RegisterType<MessageSchedulingConsumerServiceBusHost>()
-                   .As<IServiceBusHost>();
+            builder.RegisterType<MessageSchedulingConsumerServiceBusInstance>()
+                   .As<IServiceBusInstance>();
 
             base.ConfigureLifetimeScope(builder);
         }

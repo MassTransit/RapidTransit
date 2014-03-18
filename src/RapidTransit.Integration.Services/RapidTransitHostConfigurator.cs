@@ -16,9 +16,9 @@ namespace RapidTransit.Integration.Services
 
         public RapidTransitHostConfigurator()
         {
-            ServiceName = typeof(T).GetFriendlyName();
-            DisplayName = typeof(T).GetFriendlyName();
-            Description = typeof(T).GetFriendlyDescription();
+            ServiceName = typeof(T).GetDisplayName();
+            DisplayName = typeof(T).GetDisplayName();
+            Description = typeof(T).GetServiceDescription();
 
             BootstrapperFactory = settings => (T)Activator.CreateInstance(typeof(T), settings);
         }

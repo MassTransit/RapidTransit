@@ -10,21 +10,21 @@ namespace RapidTransit.Integration.Services
     using Topshelf;
 
 
-    public class ServiceBusHostService :
+    public class ServiceBusInstanceService :
         ServiceControl,
         IDisposable
     {
-        readonly IServiceBusHost[] _hosts;
+        readonly IServiceBusInstance[] _instances;
         readonly string _serviceName;
         readonly ITransportConfigurator _transportConfigurator;
         bool _disposed;
 
-        public ServiceBusHostService(ITransportConfigurator transportConfigurator, IEnumerable<IServiceBusHost> hosts,
+        public ServiceBusInstanceService(ITransportConfigurator transportConfigurator, IEnumerable<IServiceBusInstance> hosts,
             string serviceName)
         {
             _transportConfigurator = transportConfigurator;
             _serviceName = serviceName;
-            _hosts = hosts.ToArray();
+            _instances = hosts.ToArray();
         }
 
         public virtual void Dispose()
@@ -32,7 +32,7 @@ namespace RapidTransit.Integration.Services
             if (_disposed)
                 return;
 
-            Parallel.ForEach(_hosts, x => x.Dispose());
+            Parallel.ForEach(_instances, x => x.Dispose());
 
             _disposed = true;
         }
@@ -42,22 +42,22 @@ namespace RapidTransit.Integration.Services
             OnStarting(hostControl);
 
             Logger.Get(GetType())
-                  .InfoFormat("Creating {0} Service Buses for hosted service: {1}", _hosts.Length, _serviceName);
+                  .InfoFormat("Creating {0} Service Buses for hosted service: {1}", _instances.Length, _serviceName);
 
             try
             {
-                Parallel.ForEach(_hosts, hostedServiceBus => { hostedServiceBus.Start(_transportConfigurator); });
+                Parallel.ForEach(_instances, hostedServiceBus => { hostedServiceBus.Start(_transportConfigurator); });
 
                 OnStarted(hostControl);
 
                 Logger.Get(GetType())
-                      .InfoFormat("Created {0} Service Buses for hosted service: {1}", _hosts.Length, _serviceName);
+                      .InfoFormat("Created {0} Service Buses for hosted service: {1}", _instances.Length, _serviceName);
 
                 return true;
             }
             catch (Exception ex)
             {
-                Parallel.ForEach(_hosts, hostedServiceBus => hostedServiceBus.Dispose());
+                Parallel.ForEach(_instances, hostedServiceBus => hostedServiceBus.Dispose());
 
                 OnStartFailed(hostControl, ex);
                 throw;
@@ -69,18 +69,18 @@ namespace RapidTransit.Integration.Services
             OnStopping(hostControl);
 
             Logger.Get(GetType())
-                  .InfoFormat("Stopping {0} Service Buses for hosted service: {1}", _hosts.Length, _serviceName);
+                  .InfoFormat("Stopping {0} Service Buses for hosted service: {1}", _instances.Length, _serviceName);
 
             try
             {
-                Parallel.ForEach(_hosts, hostedServiceBus => hostedServiceBus.Dispose());
+                Parallel.ForEach(_instances, hostedServiceBus => hostedServiceBus.Dispose());
 
                 _disposed = true;
 
                 OnStopped(hostControl);
 
                 Logger.Get(GetType())
-                      .InfoFormat("Stopped {0} Service Buses for hosted service: {1}", _hosts.Length, _serviceName);
+                      .InfoFormat("Stopped {0} Service Buses for hosted service: {1}", _instances.Length, _serviceName);
             }
             catch (Exception ex)
             {

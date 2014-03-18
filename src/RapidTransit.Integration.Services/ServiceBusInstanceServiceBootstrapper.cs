@@ -6,16 +6,16 @@ namespace RapidTransit.Integration.Services
     using Topshelf;
 
 
-    public abstract class ServiceBusHostServiceBootstrapper :
+    public abstract class ServiceBusInstanceServiceBootstrapper :
         IServiceBootstrapper
     {
         readonly ILifetimeScope _lifetimeScope;
         readonly string _serviceName;
 
-        protected ServiceBusHostServiceBootstrapper(ILifetimeScope lifetimeScope, Type bootstrapperType)
+        protected ServiceBusInstanceServiceBootstrapper(ILifetimeScope lifetimeScope, Type bootstrapperType)
         {
             _lifetimeScope = lifetimeScope;
-            _serviceName = bootstrapperType.GetFriendlyDescription();
+            _serviceName = bootstrapperType.GetServiceDescription();
         }
 
         public ServiceControl CreateService()
@@ -29,7 +29,7 @@ namespace RapidTransit.Integration.Services
 
         protected virtual void ConfigureLifetimeScope(ContainerBuilder builder)
         {
-            builder.RegisterType<ServiceBusHostService>()
+            builder.RegisterType<ServiceBusInstanceService>()
                    .SingleInstance()
                    .WithParameter(TypedParameter.From(_serviceName))
                    .As<ServiceControl>();

@@ -1,25 +1,22 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidTransit.Integration", "RapidTransit.Integration\RapidTransit.Integration.csproj", "{27C8147B-1853-4022-B91B-5BB167C806DF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidTransit.Core", "RapidTransit.Core\RapidTransit.Core.csproj", "{7A30C7B8-DB42-4DB3-AB21-8C4D8007C507}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Riktig", "Riktig", "{042E066B-85F8-4741-A9FE-457385DF948B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riktig.Contracts", "..\..\Riktig\src\Riktig.Contracts\Riktig.Contracts.csproj", "{95F5F24A-E279-4269-A178-29F1EB561521}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riktig.Coordination", "..\..\Riktig\src\Riktig.Coordination\Riktig.Coordination.csproj", "{AB64EFFC-237D-4648-A966-36FA95C32186}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riktig.CoordinationService", "..\..\Riktig\src\Riktig.CoordinationService\Riktig.CoordinationService.csproj", "{C011ABC4-26DD-430B-AB79-217190F1129C}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riktig.ImageRetrievalService", "..\..\Riktig\src\Riktig.ImageRetrievalService\Riktig.ImageRetrievalService.csproj", "{5A47CCA4-D841-4F80-82D3-F58EFCEB0FB8}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Riktig.Web", "..\..\Riktig\src\Riktig.Web\Riktig.Web.csproj", "{08817843-1A1B-432A-84FB-5EEE0228DE7E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidTransit.Integration.Services", "RapidTransit.Integration.Services\RapidTransit.Integration.Services.csproj", "{C8603987-50DD-4ECF-A588-ABCA28032625}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidTransit.Integration.Web", "RapidTransit.Integration.Web\RapidTransit.Integration.Web.csproj", "{900D573E-29A5-481F-BAEE-2E614C36EBEC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{A4C66392-C2AD-4FB1-B1E4-2FFFF8328EE5}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,26 +32,6 @@ Global
 		{7A30C7B8-DB42-4DB3-AB21-8C4D8007C507}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A30C7B8-DB42-4DB3-AB21-8C4D8007C507}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A30C7B8-DB42-4DB3-AB21-8C4D8007C507}.Release|Any CPU.Build.0 = Release|Any CPU
-		{95F5F24A-E279-4269-A178-29F1EB561521}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{95F5F24A-E279-4269-A178-29F1EB561521}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{95F5F24A-E279-4269-A178-29F1EB561521}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{95F5F24A-E279-4269-A178-29F1EB561521}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AB64EFFC-237D-4648-A966-36FA95C32186}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AB64EFFC-237D-4648-A966-36FA95C32186}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AB64EFFC-237D-4648-A966-36FA95C32186}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AB64EFFC-237D-4648-A966-36FA95C32186}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C011ABC4-26DD-430B-AB79-217190F1129C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C011ABC4-26DD-430B-AB79-217190F1129C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C011ABC4-26DD-430B-AB79-217190F1129C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C011ABC4-26DD-430B-AB79-217190F1129C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5A47CCA4-D841-4F80-82D3-F58EFCEB0FB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5A47CCA4-D841-4F80-82D3-F58EFCEB0FB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5A47CCA4-D841-4F80-82D3-F58EFCEB0FB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5A47CCA4-D841-4F80-82D3-F58EFCEB0FB8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{08817843-1A1B-432A-84FB-5EEE0228DE7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{08817843-1A1B-432A-84FB-5EEE0228DE7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{08817843-1A1B-432A-84FB-5EEE0228DE7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{08817843-1A1B-432A-84FB-5EEE0228DE7E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C8603987-50DD-4ECF-A588-ABCA28032625}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C8603987-50DD-4ECF-A588-ABCA28032625}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C8603987-50DD-4ECF-A588-ABCA28032625}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -66,12 +43,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{95F5F24A-E279-4269-A178-29F1EB561521} = {042E066B-85F8-4741-A9FE-457385DF948B}
-		{AB64EFFC-237D-4648-A966-36FA95C32186} = {042E066B-85F8-4741-A9FE-457385DF948B}
-		{C011ABC4-26DD-430B-AB79-217190F1129C} = {042E066B-85F8-4741-A9FE-457385DF948B}
-		{5A47CCA4-D841-4F80-82D3-F58EFCEB0FB8} = {042E066B-85F8-4741-A9FE-457385DF948B}
-		{08817843-1A1B-432A-84FB-5EEE0228DE7E} = {042E066B-85F8-4741-A9FE-457385DF948B}
 	EndGlobalSection
 EndGlobal

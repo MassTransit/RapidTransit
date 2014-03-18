@@ -11,14 +11,14 @@ namespace RapidTransit.Core.Services
 
 
     /// <summary>
-    /// A hosted service bus allows the configuration of a service bus to be contained in a class
+    /// A hosted service bus allows the configurationProvider of a service bus to be contained in a class
     /// making it easier to manage service dependencies
     /// </summary>
-    public abstract class ServiceBusHost :
+    public abstract class ServiceBusInstance :
         SubscriptionBusServiceConfigurator,
-        IServiceBusHost
+        IServiceBusInstance
     {
-        static readonly ILog _log = Logger.Get<ServiceBusHost>();
+        static readonly ILog _log = Logger.Get<ServiceBusInstance>();
         readonly IList<SubscriptionBusServiceBuilderConfigurator> _configurators;
         readonly int _consumerLimit;
         readonly string _queueName;
@@ -26,15 +26,15 @@ namespace RapidTransit.Core.Services
         bool _disposed;
 
 
-        protected ServiceBusHost(IConfigurationProvider configuration, string queueKey, string consumerLimitKey,
+        protected ServiceBusInstance(IConfigurationProvider configurationProvider, string queueKey, string consumerLimitKey,
             int defaultConsumerLimit)
         {
             string queueName;
-            if (!configuration.TryGetSetting(queueKey, out queueName))
+            if (!configurationProvider.TryGetSetting(queueKey, out queueName))
                 throw new ConfigurationErrorsException("Unable to load queue name from key: " + queueKey);
 
             _queueName = queueName;
-            _consumerLimit = configuration.GetSetting(consumerLimitKey, defaultConsumerLimit);
+            _consumerLimit = configurationProvider.GetSetting(consumerLimitKey, defaultConsumerLimit);
             _configurators = new List<SubscriptionBusServiceBuilderConfigurator>();
         }
 
@@ -45,7 +45,7 @@ namespace RapidTransit.Core.Services
 
             if (_bus != null)
             {
-                _log.InfoFormat("{0} Stopping Service Bus: {1}", GetType().GetFriendlyDescription(), _bus.Endpoint.Address.Uri);
+                _log.InfoFormat("{0} Stopping Service Bus: {1}", GetType().GetServiceDescription(), _bus.Endpoint.Address.Uri);
 
                 OnDisposing(_bus);
 
@@ -72,7 +72,7 @@ namespace RapidTransit.Core.Services
 
             try
             {
-                _log.InfoFormat("{0} Starting Service Bus for Queue: {1}({2})", GetType().GetFriendlyDescription(), _queueName, _consumerLimit);
+                _log.InfoFormat("{0} Starting Service Bus for Queue: {1}({2})", GetType().GetServiceDescription(), _queueName, _consumerLimit);
                 
                 IServiceBus bus = ServiceBusFactory.New(x =>
                     {
@@ -100,7 +100,7 @@ namespace RapidTransit.Core.Services
 
         IEnumerable<ValidationResult> Configurator.Validate()
         {
-            throw new NotImplementedException("Nothing should validate this as it is just a configuration wrapper");
+            throw new NotImplementedException("Nothing should validate this as it is just a configurationProvider wrapper");
         }
 
         void SubscriptionBusServiceConfigurator.AddConfigurator(SubscriptionBusServiceBuilderConfigurator configurator)

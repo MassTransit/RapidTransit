@@ -15,7 +15,7 @@ namespace RapidTransit.Integration.Services
         protected ServiceBootstrapper(ILifetimeScope lifetimeScope)
         {
             _lifetimeScope = lifetimeScope;
-            _serviceName = typeof(TService).GetFriendlyDescription();
+            _serviceName = typeof(TService).GetServiceDescription();
         }
 
 

@@ -4,7 +4,7 @@ namespace RapidTransit.Core.Services
     using MassTransit;
 
 
-    public interface IServiceBusHost :
+    public interface IServiceBusInstance :
         IDisposable
     {
         IServiceBus Start(ITransportConfigurator transportConfigurator);

@@ -8,16 +8,16 @@
     using Quartz;
 
 
-    public class MessageSchedulingConsumerServiceBusHost :
-        ServiceBusHost
+    public class MessageSchedulingConsumerServiceBusInstance :
+        ServiceBusInstance
     {
         readonly IScheduler _scheduler;
 
-        public MessageSchedulingConsumerServiceBusHost(IConfigurationProvider configuration,
+        public MessageSchedulingConsumerServiceBusInstance(IConfigurationProvider configurationProvider,
             IConsumerFactory<ScheduleMessageConsumer> scheduleMessageConsumerFactory,
             IConsumerFactory<CancelScheduledMessageConsumer> cancelScheduledMessageConsumer,
             IScheduler scheduler)
-            : base(configuration, "MessageSchedulingQueueName", "MessageSchedulingConsumerLimit", 1)
+            : base(configurationProvider, "MessageSchedulingQueueName", "MessageSchedulingConsumerLimit", 1)
         {
             _scheduler = scheduler;
 
