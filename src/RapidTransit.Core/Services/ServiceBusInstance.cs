@@ -110,7 +110,7 @@ namespace RapidTransit.Core.Services
 
         protected virtual void OnStarting()
         {
-        }e
+        }
 
         protected virtual void OnStarted(IServiceBus bus)
         {

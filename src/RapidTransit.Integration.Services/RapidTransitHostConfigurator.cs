@@ -46,6 +46,8 @@ namespace RapidTransit.Integration.Services
 
             configurator.Service(settings =>
                 {
+                    OnStarting(settings);
+
                     _bootstrapper = BootstrapperFactory(settings);
 
                     return _bootstrapper.GetService();
@@ -63,6 +65,9 @@ namespace RapidTransit.Integration.Services
                 EventLog.CreateEventSource(serviceName, "RelayHealth");
         }
 
+        /// <summary>
+        /// Called when the service is being started, prior to the container initialization
+        /// </summary>
         public event OnHostStarting OnStarting;
     }
 }

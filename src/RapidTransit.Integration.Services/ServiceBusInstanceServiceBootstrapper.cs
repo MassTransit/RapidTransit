@@ -10,17 +10,29 @@ namespace RapidTransit.Integration.Services
         IServiceBootstrapper
     {
         readonly ILifetimeScope _lifetimeScope;
+        readonly string _lifetimeScopeTag;
         readonly string _serviceName;
 
         protected ServiceBusInstanceServiceBootstrapper(ILifetimeScope lifetimeScope, Type bootstrapperType)
         {
             _lifetimeScope = lifetimeScope;
             _serviceName = bootstrapperType.GetServiceDescription();
+            _lifetimeScopeTag = string.Format("service_{0}", _serviceName);
+        }
+
+        public string ServiceName
+        {
+            get { return _serviceName; }
+        }
+
+        public string LifetimeScopeTag
+        {
+            get { return _lifetimeScopeTag; }
         }
 
         public ServiceControl CreateService()
         {
-            ILifetimeScope lifetimeScope = _lifetimeScope.BeginLifetimeScope(ConfigureLifetimeScope);
+            ILifetimeScope lifetimeScope = _lifetimeScope.BeginLifetimeScope(_lifetimeScopeTag, ConfigureLifetimeScope);
 
             var serviceControl = lifetimeScope.Resolve<ServiceControl>();
 
@@ -30,7 +42,7 @@ namespace RapidTransit.Integration.Services
         protected virtual void ConfigureLifetimeScope(ContainerBuilder builder)
         {
             builder.RegisterType<ServiceBusInstanceService>()
-                   .SingleInstance()
+                   .InstancePerServiceScope(this)
                    .WithParameter(TypedParameter.From(_serviceName))
                    .As<ServiceControl>();
         }

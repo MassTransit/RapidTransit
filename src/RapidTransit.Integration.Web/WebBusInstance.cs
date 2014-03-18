@@ -7,9 +7,9 @@ namespace RapidTransit.Integration.Web
     public abstract class WebBusInstance :
         ServiceBusInstance
     {
-        protected WebBusInstance(IConfigurationProvider configurationProvider, string queueKey, string consumerLimitKey,
+        protected WebBusInstance(IConfigurationProvider configuration, string queueKey, string consumerLimitKey,
             int defaultConsumerLimit)
-            : base(configurationProvider, queueKey, consumerLimitKey, defaultConsumerLimit)
+            : base(configuration, queueKey, consumerLimitKey, defaultConsumerLimit)
         {
         }
     }

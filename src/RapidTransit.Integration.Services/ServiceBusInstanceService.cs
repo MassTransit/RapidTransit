@@ -19,12 +19,12 @@ namespace RapidTransit.Integration.Services
         readonly ITransportConfigurator _transportConfigurator;
         bool _disposed;
 
-        public ServiceBusInstanceService(ITransportConfigurator transportConfigurator, IEnumerable<IServiceBusInstance> hosts,
+        public ServiceBusInstanceService(ITransportConfigurator transportConfigurator, IEnumerable<IServiceBusInstance> instances,
             string serviceName)
         {
             _transportConfigurator = transportConfigurator;
             _serviceName = serviceName;
-            _instances = hosts.ToArray();
+            _instances = instances.ToArray();
         }
 
         public virtual void Dispose()
@@ -46,7 +46,7 @@ namespace RapidTransit.Integration.Services
 
             try
             {
-                Parallel.ForEach(_instances, hostedServiceBus => { hostedServiceBus.Start(_transportConfigurator); });
+                Parallel.ForEach(_instances, instance => instance.Start(_transportConfigurator));
 
                 OnStarted(hostControl);
 
@@ -57,7 +57,7 @@ namespace RapidTransit.Integration.Services
             }
             catch (Exception ex)
             {
-                Parallel.ForEach(_instances, hostedServiceBus => hostedServiceBus.Dispose());
+                Parallel.ForEach(_instances, instance => instance.Dispose());
 
                 OnStartFailed(hostControl, ex);
                 throw;
@@ -73,7 +73,7 @@ namespace RapidTransit.Integration.Services
 
             try
             {
-                Parallel.ForEach(_instances, hostedServiceBus => hostedServiceBus.Dispose());
+                Parallel.ForEach(_instances, instance => instance.Dispose());
 
                 _disposed = true;
 
